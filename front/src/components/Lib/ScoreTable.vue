@@ -25,25 +25,20 @@
         </div>
         <transition-group name="teams-list">
             <div
-                v-for="(
-                    {
-                        name,
-                        score: totalScore,
-                        tasks: teamTasks,
-                        ip,
-                        id,
-                        highlighted,
-                    },
-                    index
-                ) in teams"
+                v-for="({
+                    name,
+                    score: totalScore,
+                    tasks: teamTasks,
+                    ip,
+                    id,
+                    highlighted
+                }, index) in teams"
                 :key="name"
                 class="row"
-                :class="[highlighted ? 'highlighted' : '', `rank-${index + 1}`]"
+                :class="[highlighted ? 'highlighted' : '']"
             >
                 <div class="team-group" :class="highlighted ? '' : 'pd-3'">
-                    <div class="number">
-                        {{ index + 1 }}
-                    </div>
+                    <div class="number">{{ index + 1 }}</div>
                     <div
                         class="team team-row"
                         :style="teamStyle"
@@ -52,9 +47,7 @@
                         <div class="team-name">
                             {{ name }}
                         </div>
-                        <div class="ip">
-                            {{ ip }}
-                        </div>
+                        <div class="ip">{{ ip }}</div>
                         <button
                             v-if="admin"
                             class="edit"
@@ -63,9 +56,7 @@
                             <i class="fas fa-edit" />
                         </button>
                     </div>
-                    <div class="score">
-                        {{ totalScore.toFixed(2) }}
-                    </div>
+                    <div class="score">{{ totalScore.toFixed(2) }}</div>
                 </div>
                 <div class="service">
                     <div
@@ -78,7 +69,7 @@
                             stolen,
                             lost,
                             message,
-                            status,
+                            status
                         } in teamTasks"
                         :key="teamTaskID"
                         class="service-cell"
@@ -117,19 +108,19 @@ export default {
     props: {
         headRowTitle: {
             type: String,
-            default: '#',
+            default: '#'
         },
         tasks: {
             type: Array,
-            required: true,
+            required: true
         },
         teams: {
             type: Array,
-            required: true,
+            required: true
         },
         teamClickable: Boolean,
         taskClickable: Boolean,
-        admin: Boolean,
+        admin: Boolean
     },
 
     computed: {
@@ -138,19 +129,21 @@ export default {
         },
         taskStyle() {
             return this.taskClickable ? { cursor: 'pointer' } : {};
-        },
-    },
+        }
+    }
 };
 </script>
 
 <style lang="scss" scoped>
+// SSC Napoli Colors
 $napoli-blue: #13214F;
 $napoli-light-blue: #00A1E0;
-$napoli-gold: #FFD700;
-$napoli-silver: #C0C0C0;
-$napoli-bronze: #CD7F32;
+$napoli-lighter-blue: #4DB8FF;
+$napoli-lightest-blue: #99D6FF;
 
 .table {
+    display: flex;
+    flex-flow: column nowrap;
     width: 100%;
     background: white;
     border-radius: 8px;
@@ -158,35 +151,45 @@ $napoli-bronze: #CD7F32;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin: 1rem;
 
-    .row:first-child {
+    & > :first-child {
         background: $napoli-blue;
         color: white;
-        font-weight: bold;
-        min-height: 4em;
-
-        .number, .team, .score, .service-name {
-            padding: 12px;
+        
+        & > :not(:last-child) {
+            font-weight: bold;
+            padding-top: 0.6em;
+            padding-bottom: 0.6em;
         }
+    }
+
+    & > :not(:first-child) > * {
+        min-height: 6em;
+    }
+
+    & > :last-child > :last-child > * {
+        border-bottom: 1px solid #eee;
     }
 }
 
 .row {
     display: flex;
     flex-flow: row nowrap;
+    text-align: center;
     min-height: 3em;
     border-bottom: 1px solid #eee;
-}
 
-.rank-1 {
-    background-color: rgba($napoli-gold, 0.2);
-}
+    &.highlighted > * {
+        padding-top: 3px;
+        padding-bottom: 3px;
+    }
 
-.rank-2 {
-    background-color: rgba($napoli-silver, 0.2);
-}
+    &.highlighted > :first-child {
+        padding-left: 3px;
+    }
 
-.rank-3 {
-    background-color: rgba($napoli-bronze, 0.2);
+    &.highlighted > :last-child {
+        padding-right: 3px;
+    }
 }
 
 .pd-3 {
@@ -197,6 +200,18 @@ $napoli-bronze: #CD7F32;
     flex: 7 1 20%;
     display: flex;
     flex-flow: row nowrap;
+
+    &:nth-child(1) {
+        background-color: rgba($napoli-light-blue, 0.2);
+    }
+
+    &:nth-child(2) {
+        background-color: rgba($napoli-lighter-blue, 0.15);
+    }
+
+    &:nth-child(3) {
+        background-color: rgba($napoli-lightest-blue, 0.1);
+    }
 }
 
 .teams-list-move {
@@ -208,7 +223,6 @@ $napoli-bronze: #CD7F32;
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
-    padding: 0 1rem;
 }
 
 .team {
@@ -217,17 +231,17 @@ $napoli-bronze: #CD7F32;
     flex-flow: column nowrap;
     justify-content: center;
     position: relative;
-    padding: 0.5rem 1rem;
 }
 
 .team-name {
     font-weight: bold;
     color: $napoli-blue;
-}
-
-.ip {
-    font-size: 0.9em;
-    color: #666;
+    
+    &::before {
+        content: "⚽";
+        margin-right: 8px;
+        color: $napoli-light-blue;
+    }
 }
 
 .score {
@@ -235,9 +249,6 @@ $napoli-bronze: #CD7F32;
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
-    padding: 0 1rem;
-    font-weight: bold;
-    color: $napoli-blue;
 }
 
 .service {
@@ -264,7 +275,7 @@ $napoli-bronze: #CD7F32;
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-around;
-    padding: 1rem;
+    padding: 8px;
     min-width: 80px;
 }
 
@@ -285,10 +296,13 @@ button {
         border-radius: 0.3em;
         font-size: 0.7em;
         border: none;
-        transition: background 0.2s;
+        transition: all 0.2s;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 
         &:hover {
             background: lighten($napoli-light-blue, 10%);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
     }
 
@@ -307,20 +321,19 @@ button {
 
 .tooltip {
     font-size: 0.7rem;
+    left: 0;
+    top: 0;
+    transform: translateX(calc(-100%)) translateY(calc(-100% - 0.25em));
     position: absolute;
     width: 20em;
     text-align: center;
-    padding: 1em;
+    display: block;
+    background-color: black;
+    color: white;
     border-radius: 0.5em;
-    left: 50%;
-    transform: translateX(-50%) translateY(-100%);
-    top: -0.5em;
+    padding: 1em;
     opacity: 0;
     z-index: -1;
-    transition: opacity 0.2s;
-    background: $napoli-blue;
-    border: 1px solid $napoli-light-blue;
-    color: white;
 }
 
 .info:hover .tooltip {
@@ -328,20 +341,23 @@ button {
     z-index: 1;
 }
 
-.status-up {
-    background-color: rgba(0, 255, 0, 0.1);
-}
-
-.status-down {
-    background-color: rgba(255, 0, 0, 0.1);
-}
-
 .highlighted {
+    transform: translateZ(0);
+    animation: rotate 5s infinite linear;
     background: linear-gradient(
         to right,
         rgba($napoli-light-blue, 0.3) 0%,
         rgba($napoli-blue, 0.3) 50%,
         rgba($napoli-light-blue, 0.3) 100%
     );
+}
+
+@keyframes rotate {
+    from {
+        background-position: -3000px;
+    }
+    to {
+        background-position: 0px;
+    }
 }
 </style>
