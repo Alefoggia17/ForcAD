@@ -1,38 +1,46 @@
 <template>
-    <score-table
-        v-if="teams !== null"
-        head-row-title="#"
-        :team-clickable="true"
-        :tasks="tasks"
-        :teams="teams"
-        @openTeam="openTeam"
-    />
+    <div class="scoreboard-container">
+        <div class="header">
+            <h1 class="napoli-title">{{ tasks.length > 0 ? tasks[0].name : 'Scoreboard' }}</h1>
+            <div class="action-buttons" v-if="admin">
+                <button class="napoli-btn" @click="$emit('createTeam')">Create team</button>
+                <button class="napoli-btn" @click="$emit('createTask')">Create task</button>
+            </div>
+        </div>
+        <score-table
+            v-if="teams !== null"
+            head-row-title="#"
+            :team-clickable="true"
+            :tasks="tasks"
+            :teams="teams"
+            :admin="admin"
+            @openTeam="openTeam"
+        />
+    </div>
 </template>
 
 <script>
 import ScoreTable from '@/components/Lib/ScoreTable.vue';
-import { mapState } from 'vuex';
 
 export default {
     components: {
         ScoreTable,
     },
 
-    data() {
-        return {
-            teams: [
-                { id: 1, name: 'Napoli Azzurri', score: 2500, ip: '192.168.1.1', tasks: [], highlighted: false },
-                { id: 2, name: 'Partenopei Elite', score: 2245, ip: '192.168.1.2', tasks: [], highlighted: false },
-                { id: 3, name: 'Maradona Legacy', score: 1987, ip: '192.168.1.3', tasks: [], highlighted: false },
-                { id: 4, name: 'San Paolo Stars', score: 1856, ip: '192.168.1.4', tasks: [], highlighted: false },
-                { id: 5, name: 'Vesuvio Warriors', score: 1750, ip: '192.168.1.5', tasks: [], highlighted: false },
-            ],
-            tasks: [
-                { name: 'Service 1', id: 1 },
-                { name: 'Service 2', id: 2 },
-                { name: 'Service 3', id: 3 },
-            ],
-        };
+    computed: {
+        teams() {
+            return this.$store.state.teams || []; // Default to empty array if null/undefined
+        },
+        tasks() {
+            return this.$store.state.tasks || []; // Default to empty array if null/undefined
+        },
+    },
+
+    props: {
+        admin: {
+            type: Boolean,
+            default: false,
+        },
     },
 
     methods: {
@@ -43,4 +51,47 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+$napoli-blue: #13214F;
+$napoli-light-blue: #00A1E0;
+
+.scoreboard-container {
+    margin: 1rem;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: $napoli-blue;
+    border-radius: 8px 8px 0 0;
+    margin-bottom: -1rem;
+}
+
+.napoli-title {
+    color: white;
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.napoli-btn {
+    background: $napoli-light-blue;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s;
+
+    &:hover {
+        background: lighten($napoli-light-blue, 10%);
+    }
+}
+</style>
