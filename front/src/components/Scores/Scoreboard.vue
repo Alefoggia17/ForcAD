@@ -1,23 +1,12 @@
 <template>
-    <div class="scoreboard-container">
-        <div class="header">
-            <h1 class="napoli-title">{{ tasks.length > 0 ? tasks[0].name : 'Scoreboard' }}</h1>
-            <div class="action-buttons" v-if="admin">
-                <button class="napoli-btn" @click="$emit('createTeam')">Create team</button>
-                <button class="napoli-btn" @click="$emit('createTask')">Create task</button>
-            </div>
-        </div>
-        <score-table
-            v-if="teams !== null"
-            class="table"
-            head-row-title="#"
-            :team-clickable="true"
-            :tasks="tasks"
-            :teams="teams"
-            :admin="admin"
-            @openTeam="openTeam"
-        />
-    </div>
+    <score-table
+        v-if="teams !== null"
+        head-row-title="#"
+        :team-clickable="true"
+        :tasks="tasks"
+        :teams="teams"
+        @openTeam="openTeam"
+    />
 </template>
 
 <script>
@@ -28,21 +17,7 @@ export default {
         ScoreTable,
     },
 
-    computed: {
-        teams() {
-            return this.$store.state.teams || []; // Default a un array vuoto
-        },
-        tasks() {
-            return this.$store.state.tasks || [];
-        },
-    },
-
-    props: {
-        admin: {
-            type: Boolean,
-            default: false,
-        },
-    },
+    computed: mapState(['teams', 'tasks']),
 
     methods: {
         openTeam(id) {

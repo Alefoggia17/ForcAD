@@ -141,36 +141,8 @@ $napoli-light-blue: #00A1E0;
 $napoli-lighter-blue: #4DB8FF;
 $napoli-lightest-blue: #99D6FF;
 
-.table {
-    display: flex;
-    flex-flow: column nowrap;
-    width: 100%;
-    background: white;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 1rem;
 
-    & > :first-child {
-        background: $napoli-blue;
-        color: white;
-        
-        & > :not(:last-child) {
-            font-weight: bold;
-            padding-top: 0.6em;
-            padding-bottom: 0.6em;
-        }
-    }
-
-    & > :not(:first-child) > * {
-        min-height: 6em;
-    }
-
-    & > :last-child > :last-child > * {
-        border-bottom: 1px solid #eee;
-    }
-}
-
+/*
 .row {
     display: flex;
     flex-flow: row nowrap;
@@ -191,6 +163,7 @@ $napoli-lightest-blue: #99D6FF;
         padding-right: 3px;
     }
 }
+*/
 
 .pd-3 {
     margin-left: 2px;
