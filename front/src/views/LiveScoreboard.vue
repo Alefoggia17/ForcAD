@@ -5,7 +5,7 @@
         </button>
         <iframe
             v-if="showPonies"
-            src="https://www.youtube.com/shorts/OCaPgTvOrEc?autoplay=1"
+            src="https://www.youtube.com/embed/5Oopbsf13To?autoplay=1"
             class="pony"
             width="640"
             height="480"
