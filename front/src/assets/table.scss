@@ -1,29 +1,11 @@
-// SSC Napoli Colors
-$napoli-blue: #13214F;
-$napoli-light-blue: #00A1E0;
-$napoli-gold: #FFD700;
-$napoli-silver: #C0C0C0;
-$napoli-bronze: #CD7F32;
-
 .table {
     display: flex;
     flex-flow: column nowrap;
-    width: 100%;
-    background: white;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 1rem;
 
-    & > :first-child {
-        background: $napoli-blue;
-        color: white;
-        
-        & > :not(:last-child) {
-            font-weight: bold;
-            padding-top: 0.6em;
-            padding-bottom: 0.6em;
-        }
+    & > :first-child > :not(:last-child) {
+        font-weight: bold;
+        padding-top: 0.6em;
+        padding-bottom: 0.6em;
     }
 
     & > :not(:first-child) > * {
@@ -31,7 +13,7 @@ $napoli-bronze: #CD7F32;
     }
 
     & > :last-child > :last-child > * {
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid #c6cad1;
     }
 }
 
@@ -39,8 +21,10 @@ $napoli-bronze: #CD7F32;
     display: flex;
     flex-flow: row nowrap;
     text-align: center;
-    min-height: 3em;
-    border-bottom: 1px solid #eee;
+
+    border-top: 1px solid #c6cad1;
+    border-left: 1px solid #c6cad1;
+    border-right: 1px solid #c6cad1;
 
     &.highlighted > * {
         padding-top: 3px;
@@ -54,72 +38,4 @@ $napoli-bronze: #CD7F32;
     &.highlighted > :last-child {
         padding-right: 3px;
     }
-}
-
-// Team row backgrounds
-.row:nth-child(2) {
-    background-color: rgba($napoli-gold, 0.2);
-}
-
-.row:nth-child(3) {
-    background-color: rgba($napoli-silver, 0.2);
-}
-
-.row:nth-child(4) {
-    background-color: rgba($napoli-bronze, 0.2);
-}
-
-// Team and score styling
-.team-name {
-    font-weight: bold;
-    color: $napoli-blue;
-}
-
-.ip {
-    font-size: 0.9em;
-    color: #666;
-}
-
-.score {
-    font-weight: bold;
-    color: $napoli-blue;
-}
-
-// Service cell styling
-.service-cell {
-    padding: 8px;
-    text-align: center;
-    min-width: 80px;
-    position: relative;
-}
-
-// Button styling
-.info, .edit, .tt-edit {
-    background: $napoli-light-blue;
-    color: white;
-    border: none;
-    transition: background 0.2s;
-
-    &:hover {
-        background: lighten($napoli-light-blue, 10%);
-    }
-}
-
-// Status colors
-.status-up {
-    background-color: rgba(0, 255, 0, 0.1);
-}
-
-.status-down {
-    background-color: rgba(255, 0, 0, 0.1);
-}
-
-// Highlighted row animation
-.highlighted {
-    background: linear-gradient(
-        to right,
-        rgba($napoli-light-blue, 0.3) 0%,
-        rgba($napoli-blue, 0.3) 50%,
-        rgba($napoli-light-blue, 0.3) 100%
-    );
 }

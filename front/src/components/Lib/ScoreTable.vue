@@ -2,8 +2,8 @@
     <div class="table">
         <div class="row">
             <div class="number">{{ headRowTitle }}</div>
-            <div class="team">team</div>
-            <div class="score">score</div>
+            <div class="team">Team</div>
+            <div class="score">Score</div>
             <div class="service-name">
                 <div
                     v-for="{ name, id } in tasks"
@@ -104,33 +104,52 @@
 </template>
 
 <script>
+import { getTeamRowBackground, getTeamTaskBackground } from '@/utils/colors';
+import '@/assets/table.scss';
+
 export default {
     props: {
         headRowTitle: {
             type: String,
-            default: '#'
+            default: '#',
         },
         tasks: {
             type: Array,
-            required: true
+            required: true,
         },
         teams: {
             type: Array,
-            required: true
+            required: true,
         },
         teamClickable: Boolean,
         taskClickable: Boolean,
-        admin: Boolean
+        admin: Boolean,
+    },
+
+    data: function () {
+        return {
+            getTeamRowBackground,
+            getTeamTaskBackground,
+        };
     },
 
     computed: {
-        teamStyle() {
-            return this.teamClickable ? { cursor: 'pointer' } : {};
+        teamStyle: function () {
+            return this.teamClickable
+                ? {
+                      cursor: 'pointer',
+                  }
+                : {};
         },
-        taskStyle() {
-            return this.taskClickable ? { cursor: 'pointer' } : {};
-        }
-    }
+
+        taskStyle: function () {
+            return this.taskClickable
+                ? {
+                      cursor: 'pointer',
+                  }
+                : {};
+        },
+    },
 };
 </script>
 
@@ -140,57 +159,6 @@ $napoli-blue: #13214F;
 $napoli-light-blue: #00A1E0;
 $napoli-lighter-blue: #4DB8FF;
 $napoli-lightest-blue: #99D6FF;
-
-.table {
-    display: flex;
-    flex-flow: column nowrap;
-    width: 100%;
-    background: white;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 1rem;
-
-    & > :first-child {
-        background: $napoli-blue;
-        color: white;
-        
-        & > :not(:last-child) {
-            font-weight: bold;
-            padding-top: 0.6em;
-            padding-bottom: 0.6em;
-        }
-    }
-
-    & > :not(:first-child) > * {
-        min-height: 6em;
-    }
-
-    & > :last-child > :last-child > * {
-        border-bottom: 1px solid #eee;
-    }
-}
-
-.row {
-    display: flex;
-    flex-flow: row nowrap;
-    text-align: center;
-    min-height: 3em;
-    border-bottom: 1px solid #eee;
-
-    &.highlighted > * {
-        padding-top: 3px;
-        padding-bottom: 3px;
-    }
-
-    &.highlighted > :first-child {
-        padding-left: 3px;
-    }
-
-    &.highlighted > :last-child {
-        padding-right: 3px;
-    }
-}
 
 .pd-3 {
     margin-left: 2px;
