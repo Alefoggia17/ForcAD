@@ -22,30 +22,17 @@
 
 <script>
 import ScoreTable from '@/components/Lib/ScoreTable.vue';
+import { mapState } from 'vuex';
 
 export default {
     components: {
         ScoreTable,
     },
 
-    computed: {
-        teams() {
-            return this.$store.state.teams || []; // Default a un array vuoto
-        },
-        tasks() {
-            return this.$store.state.tasks || [];
-        },
-    },
-
-    props: {
-        admin: {
-            type: Boolean,
-            default: false,
-        },
-    },
+    computed: mapState(['teams', 'tasks']),
 
     methods: {
-        openTeam(id) {
+        openTeam: function (id) {
             this.$router.push({ name: 'team', params: { id } }).catch(() => {});
         },
     },
