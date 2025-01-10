@@ -1,10 +1,10 @@
 <template>
     <div class="scoreboard-container">
         <div class="header">
-            <h1 class="napoli-title">Napnwli Scoreboard</h1>
+            <h1 class="napoli-title">Napwnli Scoreboard</h1>
             <div class="action-buttons" v-if="admin">
-                <button class="napoli-btn" @click="$emit('createTeam')">Create team</button>
-                <button class="napoli-btn" @click="$emit('createTask')">Create task</button>
+                <button class="napoli-btn" @click="$emit('createTeam')">Crea team</button>
+                <button class="napoli-btn" @click="$emit('createTask')">Crea servizio</button>
             </div>
         </div>
         <score-table
@@ -69,7 +69,7 @@ $napoli-light-blue: #00A1E0;
 }
 
 .napoli-btn {
-    background: $napoli-light-blue;
+    background: #add8e6;
     color: white;
     border: none;
     padding: 0.5rem 1rem;
@@ -79,7 +79,7 @@ $napoli-light-blue: #00A1E0;
     transition: background 0.2s;
 
     &:hover {
-        background: lighten($napoli-light-blue, 10%);
+        background: lighten(#add8e6, 10%);
     }
 }
 

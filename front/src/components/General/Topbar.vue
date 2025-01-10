@@ -1,6 +1,7 @@
 <template>
     <div class="topbar">
-        <router-link class="tp" to="/live/"> Live </router-link>
+        <router-link class="tp" to="/live/"> Gasati con me </router-link>
+         <router-link class="tp" to="/pre-match/"> Entra nello spogliatoio prima del match</router-link>
         <div class="progress-bar" :style="{ width: `${roundProgress}%` }" />
         <div class="tp">Round: {{ round }}</div>
     </div>
@@ -50,7 +51,7 @@ export default {
 }
 
 .progress-bar {
-    background-color: #00ff00;
+    background-color: #00A1E0;
     height: 100%;
     position: absolute;
     top: 0;

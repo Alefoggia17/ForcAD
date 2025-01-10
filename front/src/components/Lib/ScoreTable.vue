@@ -45,7 +45,7 @@
                     :style="{
                             backgroundColor: getTeamRowBackground(index),
                         }"
-                    > {{ index + 1 }}</div>
+                    > {{ index + 1 }} {{ getMedal(index) }}</div>
                     <div
                         class="team team-row"
                         :style="[
@@ -152,6 +152,13 @@ export default {
         },
         taskStyle() {
             return this.taskClickable ? { cursor: 'pointer' } : {};
+        }
+    },
+
+    methods: {
+        getMedal(index) {
+            const medals = ['🥇', '🥈', '🥉'];
+            return index < 3 ? medals[index] : '';
         }
     }
 };

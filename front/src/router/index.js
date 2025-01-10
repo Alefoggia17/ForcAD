@@ -5,6 +5,7 @@ import { serverUrl } from '@/config';
 
 const Scoreboard = () => import('@/views/Scoreboard.vue');
 const LiveScoreboard = () => import('@/views/LiveScoreboard.vue');
+const LivePreMatch = () => import('@/views/LivePreMatch.vue');
 const TeamScoreboard = () => import('@/views/TeamScoreboard.vue');
 
 const AdminLogin = () => import('@/views/AdminLogin.vue');
@@ -25,6 +26,14 @@ const routes = [
         path: '/live/',
         name: 'live',
         component: LiveScoreboard,
+        meta: {
+            layout: 'empty-layout',
+        },
+    },
+    {
+        path: '/pre-match/',
+        name: 'pre-match',
+        component: LivePreMatch,
         meta: {
             layout: 'empty-layout',
         },

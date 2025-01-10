@@ -86,11 +86,11 @@ export default {
 
 <style lang="scss" scoped>
 .flag {
-    color: #00ff00;
+    color: #00A1E0;
     background-color: black;
 }
 
 .mark {
-    color: #ffff00;
+    color: #00A1E0;
 }
 </style>

@@ -8,7 +8,7 @@
         </container>
         <footer class="footer">
             Powered by
-            <span class="team">Napnwli</span> CTF team
+            <span class="team">Napwnli</span> CTF Team
         </footer>
     </div>
 </template>

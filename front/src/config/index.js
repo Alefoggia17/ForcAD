@@ -29,10 +29,10 @@ const statusColors = {
     '-1': '#fa83fc',
 };
 
-const defaultStatusColor = '#00A1E0';
+const defaultStatusColor = '#7cc5e2';
 
-const topTeamColors = ['#3657c4', '#455dac', '#1a295a'];
-const defaultTeamColor = '#00A1E0';
+const topTeamColors = ['#7cc5e2', '#7cc5e2', '#7cc5e2'];
+const defaultTeamColor = '#7cc5e2';
 
 export {
     serverUrl,

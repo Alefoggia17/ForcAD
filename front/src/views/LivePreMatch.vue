@@ -1,11 +1,11 @@
 <template>
     <div class="screen">
         <button class="ponies-toggle-btn" @click="togglePonies">
-            Non puoi fermare la magia!
+            Buona fortuna e fai GOAL!
         </button>
         <iframe
             v-if="showPonies"
-            src="https://www.youtube.com/shorts/OCaPgTvOrEc?autoplay=1"
+            src="https://www.youtube.com/embed/MO4Mmo5oykw?autoplay=1"
             class="pony"
             width="640"
             height="480"
