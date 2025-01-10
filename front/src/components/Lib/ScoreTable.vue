@@ -255,10 +255,11 @@ $napoli-lightest-blue: #99D6FF;
     flex: 20 2 0;
     display: flex;
     flex-flow: row nowrap;
-    border-left: 1px solid #eee;
+
+    border-left: 1px solid #c6cad1;
 
     & > :not(:last-child) {
-        border-right: 1px solid #eee;
+        border-right: 1px solid #c6cad1;
     }
 }
 
@@ -271,18 +272,20 @@ $napoli-lightest-blue: #99D6FF;
 
 .service-cell {
     flex: 1 1 0;
+
     position: relative;
+
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-around;
-    padding: 8px;
-    min-width: 80px;
 }
 
 .sla, .fp, .flags {
     text-align: left;
     margin-left: 0.5em;
 }
+
+
 
 button {
     &.info, &.edit, &.tt-edit {
