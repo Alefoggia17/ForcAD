@@ -141,30 +141,6 @@ $napoli-light-blue: #00A1E0;
 $napoli-lighter-blue: #4DB8FF;
 $napoli-lightest-blue: #99D6FF;
 
-
-/*
-.row {
-    display: flex;
-    flex-flow: row nowrap;
-    text-align: center;
-    min-height: 3em;
-    border-bottom: 1px solid #eee;
-
-    &.highlighted > * {
-        padding-top: 3px;
-        padding-bottom: 3px;
-    }
-
-    &.highlighted > :first-child {
-        padding-left: 3px;
-    }
-
-    &.highlighted > :last-child {
-        padding-right: 3px;
-    }
-}
-*/
-
 .pd-3 {
     margin-left: 2px;
 }
