@@ -154,7 +154,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// SSC Napoli Colors
+
 $napoli-blue: #13214F;
 $napoli-light-blue: #00A1E0;
 $napoli-lighter-blue: #4DB8FF;
@@ -168,18 +168,6 @@ $napoli-lightest-blue: #99D6FF;
     flex: 7 1 20%;
     display: flex;
     flex-flow: row nowrap;
-
-    &:nth-child(1) {
-        background-color: rgba($napoli-light-blue, 0.2);
-    }
-
-    &:nth-child(2) {
-        background-color: rgba($napoli-lighter-blue, 0.15);
-    }
-
-    &:nth-child(3) {
-        background-color: rgba($napoli-lightest-blue, 0.1);
-    }
 }
 
 .teams-list-move {
