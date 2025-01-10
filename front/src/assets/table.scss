@@ -1,6 +1,55 @@
+$napoli-blue: #13214F;
+$napoli-light-blue: #00A1E0;
+$napoli-gold: #FFD700;
+$napoli-silver: #C0C0C0;
+$napoli-bronze: #CD7F32;
+
+.scoreboard-container {
+    margin: 1rem;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: $napoli-blue;
+    border-radius: 8px 8px 0 0;
+    margin-bottom: -1rem;
+}
+
+.napoli-title {
+    color: white;
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.napoli-btn {
+    background: $napoli-light-blue;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s;
+
+    &:hover {
+        background: lighten($napoli-light-blue, 10%);
+    }
+}
+
+/* Aggiunta di stili per .table e .row */
 .table {
     display: flex;
     flex-flow: column nowrap;
+    margin: 1rem 0;
+    border: 1px solid #c6cad1;
 
     & > :first-child > :not(:last-child) {
         font-weight: bold;
@@ -38,4 +87,72 @@
     &.highlighted > :last-child {
         padding-right: 3px;
     }
+}
+
+// Team row backgrounds
+.row:nth-child(2) {
+    background-color: rgba($napoli-gold, 0.2);
+}
+
+.row:nth-child(3) {
+    background-color: rgba($napoli-silver, 0.2);
+}
+
+.row:nth-child(4) {
+    background-color: rgba($napoli-bronze, 0.2);
+}
+
+// Team and score styling
+.team-name {
+    font-weight: bold;
+    color: $napoli-blue;
+}
+
+.ip {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.score {
+    font-weight: bold;
+    color: $napoli-blue;
+}
+
+// Service cell styling
+.service-cell {
+    padding: 8px;
+    text-align: center;
+    min-width: 80px;
+    position: relative;
+}
+
+// Button styling
+.info, .edit, .tt-edit {
+    background: $napoli-light-blue;
+    color: white;
+    border: none;
+    transition: background 0.2s;
+
+    &:hover {
+        background: lighten($napoli-light-blue, 10%);
+    }
+}
+
+// Status colors
+.status-up {
+    background-color: rgba(0, 255, 0, 0.1);
+}
+
+.status-down {
+    background-color: rgba(255, 0, 0, 0.1);
+}
+
+// Highlighted row animation
+.highlighted {
+    background: linear-gradient(
+        to right,
+        rgba($napoli-light-blue, 0.3) 0%,
+        rgba($napoli-blue, 0.3) 50%,
+        rgba($napoli-light-blue, 0.3) 100%
+    );
 }
